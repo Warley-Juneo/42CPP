@@ -16,10 +16,10 @@ Intern::Intern() {
     static t_entry dictionary[] = {
         {"presidential pardon", &Intern::createPresidentialPardonForm},
         {"robotomy request", &Intern::createRobotomyRequestForm},
-        {"shrubbery creation", &Intern::createShrubberyCreationForm}
-     };
-    _dictionary = new t_entry[3];
-    memmove(_dictionary, dictionary, sizeof(t_entry) * 3);
+        {"shrubbery creation", &Intern::createShrubberyCreationForm},
+    };
+	this->_dictionary = dictionary;
+
     std::cout << "Intern default constructor called" << std::endl;
 }
 
@@ -31,7 +31,8 @@ Intern::Intern(Intern const& src) {
 }
 
 Intern Intern::operator=(Intern const& src) {
-    return (*this);
+    *this->_dictionary = *src._dictionary;
+	return (*this);
 }
 
 AForm*   Intern::createPresidentialPardonForm( std::string target ) {
@@ -46,17 +47,26 @@ AForm*  Intern::createShrubberyCreationForm( std::string target ) {
     return new ShrubberyCreationForm(target);
 }
 
+char const*	Intern::formNotFound::what( void ) const throw() {
+	return ("Form not found !!");
+}
+
 AForm* Intern::makeForm( std::string formName, std::string target ) {
-    for (int i = 0; i < 2; ++i) {
-        if (_dictionary[i].key == formName) {
-            Intern* intern = this;
-            return (intern->*_dictionary[i].function)(target);
+    try {
+        for (int i = 0; i < 3; ++i) {
+            if (_dictionary[i].key == formName) {
+                return (this->*_dictionary[i].value)(target);
+            }
         }
+        throw formNotFound();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
     }
     return NULL;
 }
 
 Intern::~Intern() {
-    delete[] _dictionary;
     std::cout << "Intern default destructor called" << std::endl;
 }

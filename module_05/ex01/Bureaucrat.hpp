@@ -20,8 +20,16 @@ class Bureaucrat
 		void				upgrade( void );
 		void				downgrade( void );
 
-        std::exception		GradeTooHighException( void );
-        std::exception		GradeTooLowException ( void );
+        class gradeTooLowException : public std::exception {
+            public:
+                char const* what() const throw();
+        };
+
+		class gradeTooHighException : public std::exception {
+            public:
+                char const* what() const throw();
+        };
+
         void				verifyException(int grade);
 
 		void				signForm(Form& src) const;

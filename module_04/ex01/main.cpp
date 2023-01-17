@@ -45,9 +45,11 @@ int main()
 	const Dog* animal_2 = new Dog(*animal_1);
 
 
-	// std::cout << "\n========Delete Animal_1===========\n";
-	// std::cout << *animal_2->getBrain() << std::endl;
-
+	std::cout << "\n========Delete Animal_1===========\n";
 	delete animal_1;
-	// delete animal_2;
+	
+	std::cout << "\n========Test brain Animal_2=======\n";
+	std::cout << *animal_2->getBrain() << std::endl;
+
+	delete animal_2;
 }

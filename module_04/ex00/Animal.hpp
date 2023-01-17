@@ -31,9 +31,3 @@ class Animal {
 };
 
 #endif
-
-Animal Fausto
-
-Animal Warley
-
-Warley = Fausto
