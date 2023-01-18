@@ -26,5 +26,19 @@ int main () {
     rrf->beSigned(bureaucrat);
     rrf->execute(bureaucrat);
 
+    AForm* rrg;
+    rrg = someRandomIntern.makeForm("presidential pardon", "Lol");
+
+    rrg->beSigned(bureaucrat);
+    rrg->execute(bureaucrat);
+
+    AForm* rrh;
+    rrh = someRandomIntern.makeForm("shrubbery creation", "Aika");
+
+    rrh->beSigned(bureaucrat);
+    rrh->execute(bureaucrat);
+
     delete rrf;
+    delete rrg;
+    delete rrh;
 }

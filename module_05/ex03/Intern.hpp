@@ -18,14 +18,15 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include <string.h>
+#include <memory>
 
 class Intern;
 
-typedef AForm*(Intern::*value)( std::string );
+typedef AForm*(Intern::*function)( std::string );
 
 typedef struct s_entry {
     std::string key;
-    value       function;
+    function    value;
 } t_entry;
 
 class Intern {
@@ -40,6 +41,11 @@ class Intern {
         AForm*   createPresidentialPardonForm( std::string target );
         AForm*   createRobotomyRequestForm( std::string target );
         AForm*   createShrubberyCreationForm( std::string target );
+
+        class formNotFound : public std::exception {
+            public:
+                char const* what() const throw();
+        };
     private:
         t_entry* _dictionary;
     

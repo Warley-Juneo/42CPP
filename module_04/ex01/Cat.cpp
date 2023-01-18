@@ -23,7 +23,7 @@ Cat::Cat(Cat const& src) : Animal("Cat") {
 	}
 }
 
-Cat Cat::operator=(Cat const& src) {
+Cat &Cat::operator=(Cat const& src) {
 	this->_type = src._type;
 	this->_brain = new Brain(*src.getBrain());
 	return (*this);

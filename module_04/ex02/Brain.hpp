@@ -19,7 +19,7 @@ class Brain {
 	public:
 		Brain();
 		Brain(Brain const& src);
-		Brain operator=(Brain const& src);
+		Brain &operator=(Brain const& src);
 		~Brain();
 
 		std::string getIdeia(int idx) const;

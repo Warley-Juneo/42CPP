@@ -19,8 +19,8 @@ Dog::Dog() : AAnimal("Dog") {
 
 Dog::Dog(Dog const& src) : AAnimal("Dog"){
 	if (this != &src) {
-		*this = src;
 		this->_brain = new Brain(*src.getBrain());
+		*this = src;
 	}
 }
 

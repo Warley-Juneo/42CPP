@@ -19,8 +19,8 @@ Dog::Dog() : Animal("Dog") {
 
 Dog::Dog(Dog const& src) : Animal("Dog"){
 	if (this != &src) {
-		*this = src;
 		this->_brain = new Brain();
+		*this = src;
 	}
 }
 

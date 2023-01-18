@@ -20,7 +20,7 @@ class Cat : public AAnimal{
 	public:
 		Cat();
 		Cat(Cat const& src);
-		Cat operator=(Cat const& src);
+		Cat &operator=(Cat const& src);
 		~Cat();
 
 		std::string const getType() const;

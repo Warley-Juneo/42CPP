@@ -25,7 +25,7 @@ Brain::Brain(Brain const& src) {
 	}
 }
 
-Brain Brain::operator=(Brain const& src) {
+Brain &Brain::operator=(Brain const& src) {
 	for (int i = 0; i < 100; i++) {
 		this->_idea[i] = src.getIdeia(i);
 	}

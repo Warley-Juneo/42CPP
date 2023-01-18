@@ -15,10 +15,10 @@
 void	Bureaucrat::verifyException(int grade) {
 	try {
 		if (grade < 1) {
-			throw GradeTooHighException();
+			throw gradeTooHighException();
 		}
 		else if (grade > 150) {
-			throw GradeTooLowException();
+			throw gradeTooLowException();
 		}
 	}
 	catch (std::exception &e) {
@@ -50,12 +50,12 @@ Bureaucrat	&Bureaucrat::operator=(Bureaucrat const& src) {
 	return (*this);
 }
 
-std::exception	Bureaucrat::GradeTooHighException( void ) {
-	throw std::out_of_range("Major grade is 1, grade changed to 1.");
+char const*	Bureaucrat::gradeTooLowException::what( void ) const throw() {
+	return ("Max grade is 150, grade changed to 150");
 }
 
-std::exception	Bureaucrat::GradeTooLowException( void ) {
-	throw std::out_of_range("Minor grade is 150, grade changed to 150.");
+char const*	Bureaucrat::gradeTooHighException::what( void ) const throw() {
+	return ("Max grade is 1, grade changed to 1");
 }
 
 const std::string	Bureaucrat::getName( void ) const {
