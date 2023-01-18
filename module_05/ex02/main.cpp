@@ -19,7 +19,7 @@ int main () {
 
     ShrubberyCreationForm shruberry("Shurumangos");
     RobotomyRequestForm roboto("Robotozinho");
-    PresidentialPardonForm zaphod("Bolsonaro");
+    PresidentialPardonForm zaphod("Igor");
 
     std::cout << "\n==== Testing Forms Failed ====\n" << std::endl;
     Bureaucrat bureaucrat("João", 150);
