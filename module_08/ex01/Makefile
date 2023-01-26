@@ -1,10 +1,10 @@
-SRC = main.cpp
+SRC = main.cpp Span.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CC = g++
 CFLAGS = -std=c++98 -g3 -Wall -Wextra -Werror
 
-NAME = easyfind
+NAME = span
 
 all:	$(NAME)
 
