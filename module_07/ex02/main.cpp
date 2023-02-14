@@ -14,7 +14,7 @@
 #include "Array.hpp"
 
 int main() {
-	std::cout << "Testing no params constructor" << std::endl;
+	std::cout << "Testing no params constructorr" << std::endl;
 	Array<int> emptyArray;
 	std::cout << "emptyArray size: " << emptyArray.size() << std::endl;
 
@@ -48,6 +48,9 @@ int main() {
 	std::cout << "\n\nTesting memory out for range" << std::endl;
 	try {
 		int outOfRange = assignArray[assignArray.size()];
+		if (outOfRange) {
+			std::cout << outOfRange << std::endl;
+		}
 	} catch (std::exception& e) {
 		std::cout << "Caught exception while accessing out of bounds memory" << std::endl;
 	}

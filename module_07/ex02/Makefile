@@ -15,7 +15,7 @@ SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CC = g++
-CFLAGS = -std=c++98 -g3
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -g3
 
 NAME = array
 
