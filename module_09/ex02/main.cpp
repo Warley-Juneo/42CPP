@@ -29,29 +29,40 @@ int main(int argc, char* argv[]) {
 		std::cout << "Error" << std::endl;
 		return 1;
 	}
+	{
+		PmergeMe list(argc, argv);
 
-	PmergeMe list(argc, argv);
+		std::cout << "Before:   ";
+		for (std::list<int>::iterator it = list.getListList().begin(); it != list.getListList().end(); it++) {
+			std::cout << *it << " ";
+		}
+		std::cout << std::endl;
 
-	std::cout << "Before:   ";
-	for (std::list<int>::iterator it = list.getList().begin(); it != list.getList().end(); it++) {
-		std::cout << *it << " ";
+		struct timeval start, end;
+		gettimeofday(&start, NULL);
+		list.startMergeList();
+		gettimeofday(&end, NULL);
+		double duration = (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
+
+		struct timeval start2, end2;
+		gettimeofday(&start2, NULL);
+		list.startMergeList();
+		gettimeofday(&end2, NULL);
+		double duration2 = (end2.tv_sec - start2.tv_sec) * 1000000.0 + (end2.tv_usec - start2.tv_usec);
+
+		std::cout << "After:    ";
+		for (std::list<int>::iterator it = list.getListList().begin(); it != list.getListList().end(); it++) {
+			std::cout << *it << " ";
+		}
+		std::cout << std::endl;
+
+		std::ostringstream out;
+		out << std::fixed << std::setprecision(5) << duration;
+		std::cout << "Time to process a range of " << list.getListList().size() << " elements with std::list : " << out.str() << " us" << std::endl;
+
+		std::ostringstream out2;
+		out2 << std::fixed << std::setprecision(5) << duration2;
+		std::cout << "Time to process a range of " << list.getListDeque().size() << " elements with std::list : " << out2.str() << " us" << std::endl;
 	}
-	std::cout << std::endl;
-
-	struct timeval start, end;
-	gettimeofday(&start, NULL);
-	list.startMerge();
-	gettimeofday(&end, NULL);
-	double duration = (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
-
-	std::cout << "After:    ";
-	for (std::list<int>::iterator it = list.getList().begin(); it != list.getList().end(); it++) {
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
-
-	std::ostringstream out;
-	out << std::fixed << std::setprecision(5) << duration;
-	std::cout << "Time to process a range of " << list.getList().size() << " elements with std::list : " << out.str() << " us" << std::endl;
-	return 0;
 }
+

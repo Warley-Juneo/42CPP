@@ -3,6 +3,7 @@
 #include <iostream>
 #include <list>
 #include <cstdlib>
+#include <deque>
 
 class PmergeMe
 {
@@ -12,15 +13,23 @@ class PmergeMe
 		PmergeMe &operator=(PmergeMe const& cpy);
 		~PmergeMe();
 
-		void	startMerge();
-		void	mergeSortList(std::list<int>& list);
-		void	mergeList(std::list<int>& left, std::list<int>& right, std::list<int>& result);
+		void	startMergeList();
+		void	mergeSortListList(std::list<int>& list);
+		void	mergeListList(std::list<int>& left, std::list<int>& right, std::list<int>& result);
 
-		std::list<int>& getList() {
+		void	startMergeDeque();
+		void	mergeSortListDeque(std::list<int>& list);
+		void	mergeListDeque(std::list<int>& left, std::list<int>& right, std::list<int>& result);
+
+		std::list<int>& getListList() {
 			return my_list;
+		}
+		std::deque<int>& getListDeque() {
+			return my_deque;
 		}
 
 	private:
 		std::list<int>	my_list;
+		std::deque<int>	my_deque;
 };
 
